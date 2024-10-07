@@ -10,9 +10,24 @@ jobs:
   build-windows:
     runs-on: windows-2022
 
-    steps:  
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Display current directory and list files
+      shell: powershell
+      run: |
+        Get-Location
+        Get-ChildItem
+
     - name: Build Windows
       shell: powershell
       run: |
         Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
-        . .\build.bat --rebuild --release
+        if (Test-Path .\build.bat) {
+          Write-Host "build.bat found, executing..."
+          .\build.bat --rebuild --release
+        } else {
+          Write-Error "build.bat not found in the current directory"
+          exit 1
+        }
