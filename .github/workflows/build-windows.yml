@@ -31,3 +31,10 @@ jobs:
           Write-Error "build.bat not found in the current directory"
           exit 1
         }
+
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: windows-build
+        path: .\_build\windows-x86_64\release\
+        if-no-files-found: error
