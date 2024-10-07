@@ -15,7 +15,7 @@ tweak lighting configurations, and leverage Generative AI for texture remasterin
 operation, this toolkit empowers creators to craft visually captivating game scenes, eliminating the need for extensive
 technical know-how.
 
-## Pre-Requirements
+## Pre-Requirements 
 
 - [Git](https://www.git-scm.com/)
 
