@@ -307,9 +307,6 @@ pre_build.commands = [
 # Multiple commands (processes) can be executed in order after build.
 # These have the same behavior as repo_build.pre_build.commands, except that they run after the build.
 post_build.commands = [
-    # Generate a shortcut to run the Mass Ingestion CLI in LSS
-    ["${root}/_build/${platform}/${config}/kit/kit${exe_ext}", "${root}/_build/${platform}/${config}/apps/lightspeed.app.trex.validation_cli_generator.kit", "--no-window", "--/app/extensions/excluded/0='omni.kit.splash' --/app/extensions/excluded/1='omni.kit.window.splash' --/app/settings/persistent=0 --/app/settings/loadUserConfig=0 --/structuredLog/enable=0 --/app/hangDetector/enabled=0 --/crashreporter/skipOldDumpUpload=1 --/app/content/emptyStageOnStart=1", "--/app/file/ignoreUnsavedOnExit=1", "--/app/fastShutdown=1", "--/app/quitAfter=10", "--exec", "${root}/tools/custom/generate_mass_cli.py"],
-    ["${root}/_build/${platform}/${config}/kit/kit${exe_ext}", "${root}/_build/${platform}/${config}/apps/omni.flux.app.service.documentation_cli_generator.kit", "--no-window", "--exec", "${root}/tools/custom/generate_app.py -id omni.flux.service.documentation -n omni.flux.app.service.documentation.cli"],
 ]
 
 [repo_build.fetch.pip]
