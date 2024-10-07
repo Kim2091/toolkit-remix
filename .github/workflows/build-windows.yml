@@ -1,45 +1,37 @@
 name: Build Windows
+
 on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
+
 jobs:
   build-windows:
     runs-on: windows-2022
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
+
     - name: Display current directory and list files
       shell: powershell
       run: |
         Get-Location
         Get-ChildItem
-    - name: Build Windows with timeout
+
+    - name: Build Windows
       shell: powershell
       run: |
         Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
         if (Test-Path .\build.bat) {
           Write-Host "build.bat found, executing..."
-          $job = Start-Job -ScriptBlock {
-            .\build.bat --rebuild --release
-          }
-          
-          # Wait for 10 minutes or until the job completes
-          $timeout = New-TimeSpan -Minutes 10
-          if (Wait-Job $job -Timeout $timeout.TotalSeconds) {
-            Receive-Job $job
-          } else {
-            Write-Host "Build process exceeded 10 minutes. Terminating..."
-            Stop-Job $job
-            Get-Process | Where-Object {$_.Name -like "*exe"} | Stop-Process -Force
-          }
-          
-          Remove-Job $job -Force
+          .\build.bat --rebuild --release
         } else {
           Write-Error "build.bat not found in the current directory"
           exit 1
         }
+
     - name: Upload build artifacts
       uses: actions/upload-artifact@v3
       with:
