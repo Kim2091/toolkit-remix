@@ -3,7 +3,7 @@
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](./LICENSE)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/NVIDIAGameWorks/toolkit-remix/graphs/commit-activity)
 
-## Introduction
+## Introduction 
 
 The RTX Remix Toolkit is a robust modding tool tailored to enhance classic DirectX 8 and 9 games.
 Powered by NVIDIA Omniverse, this toolkit equips modders with advanced editing capabilities to elevate game assets.
